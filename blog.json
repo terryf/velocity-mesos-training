@@ -1,0 +1,38 @@
+{
+  "id": "ki-blog",
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "image": "terryf/velocity-mesos-training:latest",
+      "network": "BRIDGE",
+      "portMappings": [
+        {
+          "containerPort": 4000,
+          "hostPort": 0
+        }
+      ]
+    }
+  },
+  "acceptedResourceRoles": [
+    "slave_public"
+  ],
+  "labels": {
+    "lastChangedBy": "foo@bar.com"
+  },
+  "instances": 1,
+  "cpus": 0.1,
+  "mem": 128,
+  "healthChecks": [
+    {
+      "protocol": "TCP",
+      "gracePeriodSeconds": 200,
+      "intervalSeconds": 30,
+      "portIndex": 0,
+      "timeoutSeconds": 10,
+      "maxConsecutiveFailures": 2
+    }
+  ],
+  "upgradeStrategy": {
+    "minimumHealthCapacity": 0
+  }
+}
